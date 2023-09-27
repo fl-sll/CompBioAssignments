@@ -15,7 +15,14 @@ def translate_codon(cod):
         return tc[cod]
     else:
         return None
-    
+
+def check(dna):
+    valid = dna.count("A") + dna.count("C") + dna.count("G") + dna.count("T")
+    if valid == len(dna):
+        return True
+    else:
+        return False
+
 def complement(dna):
     comp = []
     for i in dna:
@@ -63,9 +70,12 @@ def amino(complement):
 
 def main():
     dna = input("Input DNA = ").upper()
-    print(" ")
-    print("Complement = " + complement(dna))
-    print("mRNA = " + mrna(dna))
-    print("Aminoacid = " + amino(complement(dna)))
+    if check(dna) == False:
+        print("Invalid DNA Sequence")
+    else:
+        print(" ")
+        print("Complement = " + complement(dna))
+        print("mRNA = " + mrna(dna))
+        print("Aminoacid = " + amino(complement(dna)))
 
 main()
