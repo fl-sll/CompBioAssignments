@@ -18,25 +18,22 @@ def translate(amino):
         'UGC':'C', 'UGU':'C', 'UGA':'_', 'UGG':'W',
     }
 
+    #// Switch key value pairs
     ta = {v:k for k,v in ta.items()}
+
     if amino in ta:
         return ta[amino]
     else:
         return None
 
-# def take_amino(am):
-#     complement = []
-#     for i in am:
-#         if am in ta:
-#             complement.append(ta.get(i))
-#     return complement
-
+#// Creating rna from amino acid
 def make_rna(c):
     rna = ""
     for i in c:
         rna += translate(i)
     return rna
 
+#// Counts the frequency of each codon in the polypeptide chain
 def counter(a):
     d = {}
     for j in range(0, len(a),3):
@@ -50,9 +47,12 @@ def counter(a):
         print(f"{k} = {v}")
 
 def main():
+    #// take polypeptide chain from user
     amino = input("Input Amino = ").upper()
     print(" ")
+    #// print corresponding rna formed from the polypeptide chains
     print(f"mRNA = {make_rna(amino)}")
+    #// counts the frequency of each codon
     counter(make_rna(amino))
 
 main()
