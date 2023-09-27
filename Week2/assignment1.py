@@ -16,6 +16,7 @@ def translate_codon(cod):
     else:
         return None
 
+#// Checks if DNA is valid by crosschecking the nucleotide bases
 def check(dna):
     valid = dna.count("A") + dna.count("C") + dna.count("G") + dna.count("T")
     if valid == len(dna):
@@ -23,6 +24,7 @@ def check(dna):
     else:
         return False
 
+#// Checks the complement nucleotide bases from the dna sequence
 def complement(dna):
     comp = []
     for i in dna:
@@ -39,6 +41,7 @@ def complement(dna):
         c += i
     return c
 
+#// Converts the complement nucleotide bases to mRNA
 def mrna(l):
     rn = []
     for i in l:
@@ -55,7 +58,7 @@ def mrna(l):
         r += i
     return r
 
-
+#// Provides the name of amino acids present in the polypeptide chain
 def amino(complement):
     acid = ""
     if len(complement)%3 == 0:
@@ -69,13 +72,19 @@ def amino(complement):
     return acid
 
 def main():
+    #// takes dna sequence from user
     dna = input("Input DNA = ").upper()
+    #// if dna is invalid, exit the program
     if check(dna) == False:
         print("Invalid DNA Sequence")
+        #// if dna is valid
     else:
         print(" ")
+        #// shows the complement nucleotide bases
         print("Complement = " + complement(dna))
+        #// shows the mRNA
         print("mRNA = " + mrna(dna))
+        #// shows the name of amino acids present in the polypeptide chain
         print("Aminoacid = " + amino(complement(dna)))
 
 main()
