@@ -1,9 +1,10 @@
 def check(dna):
-    for i in dna:
-        if i == "A" or "G" or "C" or "T":
-            return "Valid"
-        else:
-            return "Invalid"
+    seqm = dna.upper()
+    valid = seqm.count("A") + seqm.count("C") + seqm.count("G") + seqm.count("T")
+    if valid == len(seqm):
+        return True
+    else:
+        return False
 
 def counter(a):
     freq = {}
