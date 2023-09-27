@@ -39,22 +39,20 @@ def make_rna(c):
 
 def counter(a):
     d = {}
-    for i in a:
-        t = translate(i)
-        if t in d:
-            d[t] += 1
+    for j in range(0, len(a),3):
+        rn = a[j:j+3]
+        if rn in d:
+            d[rn] += 1
         else:
-            d[t] = 1
+            d[rn] = 1
 
     for k,v in d.items():
         print(f"{k} = {v}")
-
-
 
 def main():
     amino = input("Input Amino = ").upper()
     print(" ")
     print(f"mRNA = {make_rna(amino)}")
-    counter(amino)
+    counter(make_rna(amino))
 
 main()
